@@ -1,13 +1,23 @@
 pipeline {
+    agent {
+        docker { image 'node:20.11.0-alpine3.19' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}
+/*
+pipeline {
   agent {dockerfile {
   args "-u jenkins"}
   }
   stages {
     stage("prepare") {
       steps {
-        name: Gkl
-        services:
-          - docker
         script{
         sh "pipenv install --dev"
         }
@@ -30,3 +40,4 @@ pipeline {
     }
   }
 }
+*/
