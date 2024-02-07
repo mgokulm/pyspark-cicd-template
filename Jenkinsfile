@@ -5,6 +5,9 @@ pipeline {
   stages {
     stage("prepare") {
       steps {
+        name: Gkl
+        services:
+          - docker
         script{
         sh "pipenv install --dev"
         }
