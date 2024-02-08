@@ -1,10 +1,13 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
+    }
     stages {
-        stage('Test') {
+        stage('Example') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                echo 'Hello World'
             }
         }
     }
