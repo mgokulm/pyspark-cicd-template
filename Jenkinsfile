@@ -1,6 +1,7 @@
 pipeline {
   agent {dockerfile {
-  args "-u jenkins"}
+    filename "myjenkins-blueocean:2.426.3-1"
+    args "-u jenkins"}
   }
   stages {
     stage("prepare") {
