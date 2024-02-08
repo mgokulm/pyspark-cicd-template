@@ -1,14 +1,15 @@
 pipeline {
-    agent any
-    options {
-        // Timeout counter starts AFTER agent is allocated
-        timeout(time: 1, unit: 'SECONDS')
-    }
-    stages {
-        stage('Example') {
-            steps {
-                echo 'Hello World'
-            }
+	agent none
+  stages {
+  	stage('Maven Install') {
+    	agent {
+      	docker {
+        	image 'maven:3.5.0'
         }
+      }
+      steps {
+      	sh 'mvn clean install'
+      }
     }
+  }
 }
