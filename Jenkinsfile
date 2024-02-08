@@ -1,15 +1,10 @@
 pipeline {
-	agent none
-  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:3.5.0'
+    agent { docker { image 'python:3.12.1-alpine3.19' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'python --version'
+            }
         }
-      }
-      steps {
-      	sh 'mvn clean install'
-      }
     }
-  }
 }
