@@ -1,9 +1,11 @@
 pipeline {
-    agent { docker { image 'python:3.12.1-alpine3.19' } }
+    agent { dockerfile true
+           }
     stages {
-        stage('build') {
+        stage('Example') {
             steps {
-                sh 'python --version'
+                echo 'Hello World!'
+                sh 'echo myCustomEnvVar = $myCustomEnvVar'
             }
         }
     }
